@@ -1,7 +1,6 @@
 import React from 'react';
 
 import PhotoListItem from './components/PhotoListItem';
-import PhotoFavButton from 'components/PhotoFavButton';
 import './App.scss';
 
 const sampleDataForPhotoListItem = {
@@ -24,12 +23,11 @@ const App = () => {
   }
   return (
     <div className="App">
-      {/* {
+      {
         photos.map(photo => 
           <PhotoListItem key={photo.id} imageData={photo}/>
         )
-      } */}
-    <PhotoFavButton />
+      }
     </div>
   );
 };

@@ -1,6 +1,7 @@
 import React from "react";
 
 import "../styles/PhotoListItem.scss";
+import PhotoFavButton from "./PhotoFavButton";
 
 
 
@@ -16,6 +17,7 @@ const PhotoListItem = ({imageData}) => {
         <figcaption >{imageData.username}</figcaption>
         <address className="photo-list__user-location">{imageData.location.city}, {imageData.location.country}</address>
       </div>
+      <PhotoFavButton />
       </div>
     </article>
   )
