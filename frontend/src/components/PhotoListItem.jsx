@@ -12,8 +12,8 @@ const PhotoListItem = ({imageData}) => {
       <img className="photo-list__image" src={imageData.imageSource} />
       <div className="photo-list__user-details">
       <img className="photo-list__user-profile" src={imageData.profile} />
-      <div>
-        <figcaption className="photo-list__user-info">{imageData.username}</figcaption>
+      <div className="photo-list__user-info">
+        <figcaption >{imageData.username}</figcaption>
         <address className="photo-list__user-location">{imageData.location.city}, {imageData.location.country}</address>
       </div>
       </div>
