@@ -6,16 +6,16 @@ import PhotoFavButton from "./PhotoFavButton";
 
 
 
-const PhotoListItem = ({imageData}) => {
+const PhotoListItem = ({photo}) => {
 
   return(
-    <article className="photo-list__item" key={imageData.id}>
-      <img className="photo-list__image" src={imageData.imageSource} />
+    <article className="photo-list__item" key={photo.id}>
+      <img className="photo-list__image" src={photo.urls.regular} />
       <div className="photo-list__user-details">
-      <img className="photo-list__user-profile" src={imageData.profile} />
+      <img className="photo-list__user-profile" src={photo.user.profile} />
       <div className="photo-list__user-info">
-        <figcaption >{imageData.username}</figcaption>
-        <address className="photo-list__user-location">{imageData.location.city}, {imageData.location.country}</address>
+        <figcaption >{photo.user.username}</figcaption>
+        <address className="photo-list__user-location">{photo.location.city}, {photo.location.country}</address>
       </div>
       <PhotoFavButton />
       </div>
