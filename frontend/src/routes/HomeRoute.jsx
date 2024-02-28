@@ -5,7 +5,7 @@ import TopNavigation from 'components/TopNavigationBar';
 import '../styles/HomeRoute.scss';
 
 const HomeRoute = (props) => {
-  const {photos, topics} = props;
+  const {photos, topics, showOrHideModal} = props;
     // Globally track favourited photos
     const [hasFavourite, setHasFavourite] = useState(false);
   
@@ -19,7 +19,7 @@ const HomeRoute = (props) => {
   return (
     <div className="home-route">
       <TopNavigation topics={topics} hasFavourite={hasFavourite}/>
-      <PhotoList photos={photos} favouriteChecker={favouriteChecker}/>
+      <PhotoList photos={photos} favouriteChecker={favouriteChecker} displayModal={showOrHideModal}/>
     </div>
   );
 };

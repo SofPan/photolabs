@@ -3,13 +3,10 @@ import React from "react";
 import "../styles/PhotoListItem.scss";
 import PhotoFavButton from "./PhotoFavButton";
 
-
-
-
-const PhotoListItem = ({photo, countFavourites}) => {
-
+const PhotoListItem = (props) => {
+  const {photo, countFavourites, displayModal} = props;
   return(
-    <article className="photo-list__item" key={photo.id}>
+    <article onClick={displayModal} className="photo-list__item" key={photo.id}>
       <img className="photo-list__image" src={photo.urls.regular} />
       <div className="photo-list__user-details">
       <img className="photo-list__user-profile" src={photo.user.profile} />
