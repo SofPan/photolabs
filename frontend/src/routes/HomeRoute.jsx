@@ -5,10 +5,10 @@ import TopNavigation from 'components/TopNavigationBar';
 import '../styles/HomeRoute.scss';
 
 const HomeRoute = (props) => {
-  const {photos, topics, favouriteChecker, favourited} = props;
+  const {photos, topics, favouriteChecker, hasFavourite} = props;
   return (
     <div className="home-route">
-      <TopNavigation topics={topics} favourited={favourited}/>
+      <TopNavigation topics={topics} hasFavourite={hasFavourite}/>
       <PhotoList photos={photos} favouriteChecker={favouriteChecker}/>
     </div>
   );
