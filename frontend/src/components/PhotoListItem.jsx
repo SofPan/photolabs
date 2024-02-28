@@ -5,8 +5,12 @@ import PhotoFavButton from "./PhotoFavButton";
 
 const PhotoListItem = (props) => {
   const {photo, countFavourites, toggleModal} = props;
+  const handleModalClick = (e) => {
+    const photoId = e.target.parentNode.getAttribute("id");
+    toggleModal(photoId);
+  }
   return(
-    <article onClick={toggleModal} className="photo-list__item" key={photo.id}>
+    <article onClick={handleModalClick} className="photo-list__item" key={photo.id} id={photo.id}>
       <img className="photo-list__image" src={photo.urls.regular} />
       <div className="photo-list__user-details">
       <img className="photo-list__user-profile" src={photo.user.profile} />
