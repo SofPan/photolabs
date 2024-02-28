@@ -11,7 +11,7 @@ const App = () => {
 
   return (
     <div className="App">
-      {/* <PhotoList /> */}
+      <PhotoList />
       <TopicList />      
     </div>
   );
