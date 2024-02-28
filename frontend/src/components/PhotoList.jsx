@@ -4,7 +4,7 @@ import PhotoListItem from "./PhotoListItem";
 import "../styles/PhotoList.scss";
 
 const PhotoList = (props) => {
-  const {photos, favouriteChecker, displayModal} = props;
+  const {photos, favouriteChecker, toggleModal} = props;
 
   const [numberOfFavourites, setNumberOfFavourites] = useState(0);
   // count total number of favorites
@@ -24,7 +24,7 @@ const PhotoList = (props) => {
     <ul className="photo-list">
       {
         photos.map(photo => 
-          <PhotoListItem key={photo.id} photo={photo} countFavourites={countFavourites} displayModal={displayModal}/>
+          <PhotoListItem key={photo.id} photo={photo} countFavourites={countFavourites} toggleModal={toggleModal}/>
         )
       }
     </ul>

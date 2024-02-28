@@ -11,12 +11,12 @@ import PhotoDetailsModal from 'routes/PhotoDetailsModal';
 const App = () => {
   const [displayModal, setDisplayModal] = useState(false);
 
-  const showOrHideModal = () => {
+  const toggleModal = () => {
     setDisplayModal(!displayModal);
   }
   return (
     <div className="App">
-      <HomeRoute photos={photos} topics={topics} showOrHideModal={showOrHideModal}/>
+      <HomeRoute photos={photos} topics={topics} toggleModal={toggleModal}/>
       {displayModal && <PhotoDetailsModal />}
     </div>
   );
