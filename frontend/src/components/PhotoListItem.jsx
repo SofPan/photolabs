@@ -6,7 +6,7 @@ import PhotoFavButton from "./PhotoFavButton";
 
 
 
-const PhotoListItem = ({photo}) => {
+const PhotoListItem = ({photo, countFavourites}) => {
 
   return(
     <article className="photo-list__item" key={photo.id}>
@@ -17,7 +17,7 @@ const PhotoListItem = ({photo}) => {
         <figcaption >{photo.user.username}</figcaption>
         <address className="photo-list__user-location">{photo.location.city}, {photo.location.country}</address>
       </div>
-      <PhotoFavButton />
+      <PhotoFavButton countFavourites={countFavourites}/>
       </div>
     </article>
   )

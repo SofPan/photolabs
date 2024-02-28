@@ -1,12 +1,21 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useState, useEffect } from 'react';
 
 import FavIcon from './FavIcon';
 import '../styles/PhotoFavButton.scss';
 
-function PhotoFavButton() {
+function PhotoFavButton({countFavourites}) {
   const [selected, setSelected] = useState(false);
 
-  const handleClick = e => setSelected(!selected);
+  // TODO: first figure out how to get selected to lift up the correct state
+  const handleClick = e => {
+    const changeSelected = !selected;
+    setSelected(changeSelected)
+      changeSelected ? countFavourites(true) : countFavourites(false);
+  }
+  
+  ;
+  
+
 
   return (
     <div className="photo-list__fav-icon">
