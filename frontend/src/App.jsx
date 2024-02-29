@@ -8,7 +8,6 @@ import topics from './mocks/topics';
 import PhotoDetailsModal from 'routes/PhotoDetailsModal';
 
 
-// Note: Rendering a single component to build components in isolation
 const App = () => {
   const [displayModal, setDisplayModal] = useState(false);
   const [modalDetails, setModalDetails] = useState({});
@@ -16,14 +15,14 @@ const App = () => {
     const isDisplayed = !displayModal;
     setDisplayModal(isDisplayed);
 
-    // if (isDisplayed){
-      // const photo = photos[id];
-      // setModalDetails({
-      //   full: photo.urls.full,
-      //   user: photo.user,
-      //   location: photo.location
-      // });
-    // }
+    if (isDisplayed){
+      const currentPhoto = photos.filter(photo => photo.id === id)[0];
+      setModalDetails({
+        urls: currentPhoto.urls,
+        user: currentPhoto.user,
+        location: currentPhoto.location
+      });
+    }
   }
   return (
     <div className="App">
