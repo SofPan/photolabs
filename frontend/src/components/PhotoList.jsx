@@ -5,26 +5,25 @@ import "../styles/PhotoList.scss";
 
 const PhotoList = (props) => {
   const {photos, favouriteChecker, toggleModal} = props;
+  const [favouriteArray, setFavouriteArray] = useState([]);
 
-  const [numberOfFavourites, setNumberOfFavourites] = useState(0);
-  // count total number of favorites
-  const countFavourites = (isFavourite) => {
-    let countFavourites = numberOfFavourites;
-    if(isFavourite){
-      countFavourites++;
-      setNumberOfFavourites(countFavourites);
-    } else {
-      countFavourites--;
-      setNumberOfFavourites(countFavourites);
-    }
+  // add or remove favourite from array and leverage length
+  const pushToFavourites = (favouritePhoto) => {
+    const favouritePhotoArray = [...favouriteArray, favouritePhoto]
+    setFavouriteArray(favouritePhotoArray);
+    favouriteChecker(true);
+  }
 
-    return countFavourites > 0 ? favouriteChecker(true) : favouriteChecker(false);
+  const removeFromFavourites = (photoToRemove) => {
+    const filteredPhotoArray = favouriteArray.filter(photo => photo.id != photoToRemove.id);
+    setFavouriteArray(filteredPhotoArray);
+    filteredPhotoArray.length === 0 && favouriteChecker(false);
   }
   return (
     <ul className="photo-list">
       {
         photos.map(photo => 
-          <PhotoListItem key={photo.id} photo={photo} countFavourites={countFavourites} toggleModal={toggleModal}/>
+          <PhotoListItem key={photo.id} photo={photo} toggleModal={toggleModal} pushToFavourites={pushToFavourites} removeFromFavourites={removeFromFavourites}/>
         )
       }
     </ul>

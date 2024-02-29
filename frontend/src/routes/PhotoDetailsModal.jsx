@@ -3,9 +3,10 @@ import React from 'react';
 import '../styles/PhotoDetailsModal.scss'
 import closeSymbol from '../assets/closeSymbol.svg';
 import PhotoList from 'components/PhotoList';
+import PhotoFavButton from 'components/PhotoFavButton';
 
 const PhotoDetailsModal = (props) => {
-  const {toggleModal, modalDetails, photos} = props;
+  const {toggleModal, modalDetails, photos, hasFavourite} = props;
   const {location, urls, user} = modalDetails;
   return (
     <div className="photo-details-modal">
@@ -13,8 +14,9 @@ const PhotoDetailsModal = (props) => {
         <img src={closeSymbol} alt="close symbol" />
       </button>
       {
-      modalDetails &&
+        modalDetails &&
         <div> 
+          <PhotoFavButton />
           <article>
             <img className="photo-details-modal__image" src={urls.full} />
           <div className="photo-details-modal__photographer-details">
