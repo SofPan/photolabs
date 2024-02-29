@@ -18,3 +18,9 @@
   text-underline-position: auto;
   margin-left: 24px;
 }
+
+.top-nav-bar__topics{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
