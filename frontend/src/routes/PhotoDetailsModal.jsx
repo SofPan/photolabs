@@ -26,8 +26,8 @@ const PhotoDetailsModal = (props) => {
       {
         modalDetails &&
         <div> 
+          <div className="photo-details-modal__top-bar">
           <PhotoFavButton getFavouritePhotoId={getFavouritePhotoId}/>
-          <article>
             <img className="photo-details-modal__image" src={urls.full} />
           <div className="photo-details-modal__photographer-details">
               <img className="photo-details-modal__photographer-profile" src={user.profile} />
@@ -36,7 +36,7 @@ const PhotoDetailsModal = (props) => {
                 <address className="photo-details-modal__photographer-location">{location.city}, {location.country}</address>
               </div>
           </div>
-          </article>
+          </div>
           <div className="photo-details-modal__header">
             <section className="photo-details-modal__images">
               <PhotoList photos={photos}/>

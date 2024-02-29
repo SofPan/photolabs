@@ -36,11 +36,17 @@
 
 .photo-details-modal__top-bar {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: center;
   margin: 16px;
   margin-top: 8px;
   align-items: center;
+
+  .photo-list__fav-icon{
+    right: unset;
+    top: 20px;
+    left: 30px; 
+  }
 }
 
 .photo-details-modal__photographer-details {
