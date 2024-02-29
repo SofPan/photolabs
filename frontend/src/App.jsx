@@ -16,27 +16,18 @@ const App = () => {
   const [displayModal, setDisplayModal] = useState(false);
   const [modalDetails, setModalDetails] = useState({});
   
-  // Check if there are favourites
-  const favouriteChecker = (isFavourite = false) => {
-    if (isFavourite){
-      setHasFavourite(true);
-    } else {
-      setHasFavourite(false);
-    }
-  }
-
   // add new favourite to array
   const pushToFavourites = (favouritePhoto) => {
     const favouritePhotoArray = [...favouriteArray, favouritePhoto]
     setFavouriteArray(favouritePhotoArray);
-    favouriteChecker(true);
+    setHasFavourite(true);
   }
   // remove un-favourited item from array and check length
   const removeFromFavourites = (photoToRemove) => {
     const filteredPhotoArray = favouriteArray.filter(photo => photo.id != photoToRemove.id);
     setFavouriteArray(filteredPhotoArray);
     // if no array items remain, favourites notification should clear
-    filteredPhotoArray.length === 0 && favouriteChecker(false);
+    filteredPhotoArray.length === 0 && setHasFavourite(false);
   }
 
   // Show or hide modal
@@ -59,7 +50,6 @@ const App = () => {
         photos={photos} 
         topics={topics} 
         toggleModal={toggleModal}
-        favouriteChecker={favouriteChecker}
         hasFavourite={hasFavourite}
         pushToFavourites={pushToFavourites}
         removeFromFavourites={removeFromFavourites}
