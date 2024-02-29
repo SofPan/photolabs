@@ -3,8 +3,8 @@ import React, { useCallback, useState, useEffect } from 'react';
 import FavIcon from './FavIcon';
 import '../styles/PhotoFavButton.scss';
 
-function PhotoFavButton({getFavouritePhotoId}) {
-  const [selected, setSelected] = useState(false);
+function PhotoFavButton({getFavouritePhotoId, isSelected = false}) {
+  const [selected, setSelected] = useState(isSelected);
 
   const handleClick = e => {
     const changeSelected = !selected;

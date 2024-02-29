@@ -11,17 +11,32 @@ import PhotoDetailsModal from 'routes/PhotoDetailsModal';
 const App = () => {
   // Globally track favourited photos
   const [hasFavourite, setHasFavourite] = useState(false);
+  const [favouriteArray, setFavouriteArray] = useState([]);
   // Modal state
   const [displayModal, setDisplayModal] = useState(false);
   const [modalDetails, setModalDetails] = useState({});
   
-  // Check if image is a favourite
+  // Check if there are favourites
   const favouriteChecker = (isFavourite = false) => {
     if (isFavourite){
       setHasFavourite(true);
     } else {
       setHasFavourite(false);
     }
+  }
+
+  // add new favourite to array
+  const pushToFavourites = (favouritePhoto) => {
+    const favouritePhotoArray = [...favouriteArray, favouritePhoto]
+    setFavouriteArray(favouritePhotoArray);
+    favouriteChecker(true);
+  }
+  // remove un-favourited item from array and check length
+  const removeFromFavourites = (photoToRemove) => {
+    const filteredPhotoArray = favouriteArray.filter(photo => photo.id != photoToRemove.id);
+    setFavouriteArray(filteredPhotoArray);
+    // if no array items remain, favourites notification should clear
+    filteredPhotoArray.length === 0 && favouriteChecker(false);
   }
 
   // Show or hide modal
@@ -46,6 +61,8 @@ const App = () => {
         toggleModal={toggleModal}
         favouriteChecker={favouriteChecker}
         hasFavourite={hasFavourite}
+        pushToFavourites={pushToFavourites}
+        removeFromFavourites={removeFromFavourites}
       />
       {
         displayModal && 
@@ -53,7 +70,8 @@ const App = () => {
           toggleModal={toggleModal} 
           modalDetails={modalDetails}
           photos={photos}
-          hasFavourite={hasFavourite}
+          pushToFavourites={pushToFavourites}
+          removeFromFavourites={removeFromFavourites}
         />
       }
     </div>

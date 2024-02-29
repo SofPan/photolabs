@@ -5,11 +5,17 @@ import TopNavigation from 'components/TopNavigationBar';
 import '../styles/HomeRoute.scss';
 
 const HomeRoute = (props) => {
-  const {photos, topics, toggleModal, hasFavourite, favouriteChecker} = props;
+  const {photos, topics, toggleModal, hasFavourite, favouriteChecker, pushToFavourites, removeFromFavourites} = props;
   return (
     <div className="home-route">
       <TopNavigation topics={topics} hasFavourite={hasFavourite}/>
-      <PhotoList photos={photos} favouriteChecker={favouriteChecker} toggleModal={toggleModal}/>
+      <PhotoList 
+        photos={photos} 
+        favouriteChecker={favouriteChecker} 
+        toggleModal={toggleModal}
+        pushToFavourites={pushToFavourites}
+        removeFromFavourites={removeFromFavourites}
+      />
     </div>
   );
 };

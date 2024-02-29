@@ -4,7 +4,7 @@ import "../styles/PhotoListItem.scss";
 import PhotoFavButton from "./PhotoFavButton";
 
 const PhotoListItem = (props) => {
-  const {photo, countFavourites, toggleModal, pushToFavourites, removeFromFavourites} = props;
+  const {photo, toggleModal, pushToFavourites, removeFromFavourites} = props;
   const photoId = photo.id;
   const handleModalClick = (e) => {
     toggleModal(photoId);

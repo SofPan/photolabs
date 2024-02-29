@@ -1,4 +1,4 @@
-import React from 'react';
+import {React, useState} from 'react';
 
 import '../styles/PhotoDetailsModal.scss'
 import closeSymbol from '../assets/closeSymbol.svg';
@@ -6,8 +6,18 @@ import PhotoList from 'components/PhotoList';
 import PhotoFavButton from 'components/PhotoFavButton';
 
 const PhotoDetailsModal = (props) => {
-  const {toggleModal, modalDetails, photos, hasFavourite} = props;
+  // const [isSelected, setIsSelected] = useState(false);
+  const {toggleModal, modalDetails, photos, pushToFavourites, removeFromFavourites} = props;
   const {location, urls, user} = modalDetails;
+  // photoArray.filter(photo => {
+  //   if (photo.id === modalDetails.id){
+  //     setIsSelected(true);
+  //   }
+  // })
+  const getFavouritePhotoId = (favourite) => {
+    favourite ? pushToFavourites(modalDetails) : removeFromFavourites(modalDetails);
+  }
+
   return (
     <div className="photo-details-modal">
       <button onClick={toggleModal} className="photo-details-modal__close-button">
@@ -16,7 +26,7 @@ const PhotoDetailsModal = (props) => {
       {
         modalDetails &&
         <div> 
-          <PhotoFavButton />
+          <PhotoFavButton getFavouritePhotoId={getFavouritePhotoId}/>
           <article>
             <img className="photo-details-modal__image" src={urls.full} />
           <div className="photo-details-modal__photographer-details">
