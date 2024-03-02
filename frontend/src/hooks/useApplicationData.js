@@ -1,45 +1,48 @@
 import { useReducer } from "react";
 
+const ADD_FAVOURITE = "add";
+const REM_FAVOURITE = "remove";
+const OPEN_MODAL = "open";
+const CLOSE_MODAL = "close";
+
 const useApplicationData = () => {
   // Globally track favourited photos
   const [favouriteArray, favouriteDispatch] = useReducer((favouriteArray, action) => {
-    if (action.type === "add") {
-      favouriteArray = [...favouriteArray, action.photo];
+    if (action.type === ADD_FAVOURITE) {
+      return [...favouriteArray, action.photo];
     }
 
-    if (action.type === "remove") {
-      favouriteArray = favouriteArray.filter(photo => photo.id != action.photo.id);
+    if (action.type === REM_FAVOURITE) {
+      return favouriteArray.filter(photo => photo.id != action.photo.id);
     }
-    return favouriteArray;
   }, []);
 
   const addFavourite = (photo) => {
-    favouriteDispatch({ type: "add", photo });
+    favouriteDispatch({ type: ADD_FAVOURITE, photo });
   }
 
   const removeFavourite = (photo) => {
-    favouriteDispatch({ type: "remove", photo });
+    favouriteDispatch({ type: REM_FAVOURITE, photo });
   }
 
   // Modals
   const [modal, modalDispatch] = useReducer((modal, action) => {
-    if (action.type === "open") {
-      modal = action.currentPhoto;
+    if (action.type === OPEN_MODAL) {
+      return action.currentPhoto;
     }
 
-    if (action.type === "close") {
-      modal = false;
+    if (action.type === CLOSE_MODAL) {
+      return false;
     }
-    return modal;
   }, false)
 
   // Show or hide modal
   const openModal = (currentPhoto) => {
-    modalDispatch({ type: "open", currentPhoto });
+    modalDispatch({ type: OPEN_MODAL, currentPhoto });
   }
 
   const closeModal = (currentPhoto) => {
-    modalDispatch({ type: "close", currentPhoto })
+    modalDispatch({ type: CLOSE_MODAL, currentPhoto })
   }
 
   return {
