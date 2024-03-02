@@ -41,8 +41,8 @@ const useApplicationData = () => {
     modalDispatch({ type: OPEN_MODAL, currentPhoto });
   }
 
-  const closeModal = (currentPhoto) => {
-    modalDispatch({ type: CLOSE_MODAL, currentPhoto })
+  const closeModal = () => {
+    modalDispatch({ type: CLOSE_MODAL })
   }
 
   return {
