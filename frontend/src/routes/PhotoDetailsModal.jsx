@@ -6,14 +6,8 @@ import PhotoList from 'components/PhotoList';
 import PhotoFavButton from 'components/PhotoFavButton';
 
 const PhotoDetailsModal = (props) => {
-  // const [isSelected, setIsSelected] = useState(false);
   const {toggleModal, modalDetails, photos, pushToFavourites, removeFromFavourites} = props;
   const {location, urls, user} = modalDetails;
-  // photoArray.filter(photo => {
-  //   if (photo.id === modalDetails.id){
-  //     setIsSelected(true);
-  //   }
-  // })
   const getFavouritePhotoId = (favourite) => {
     favourite ? pushToFavourites(modalDetails) : removeFromFavourites(modalDetails);
   }
