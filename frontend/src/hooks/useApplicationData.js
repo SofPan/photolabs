@@ -27,6 +27,7 @@ const useApplicationData = () => {
 
   // Modals
   const [modal, modalDispatch] = useReducer((modal, action) => {
+    console.log(action.currentPhoto.similar_photos)
     if (action.type === OPEN_MODAL) {
       return action.currentPhoto;
     }

@@ -89,7 +89,7 @@ const photo5 = {
   }
 }
 
-const photo6 =  {
+const photo6 = {
   "id": "6",
   "location": {
     "city": "Montreal",
@@ -185,93 +185,93 @@ const photo10 = {
 const photos = [
   {
     ...photo1,
-    similar_photos: {
+    similar_photos: [
       photo2,
       photo3,
       photo4,
       photo5,
-    }
+    ]
   },
   {
     ...photo2,
-    similar_photos: {
+    similar_photos: [
       photo2,
       photo3,
       photo4,
       photo5,
-    }
+    ]
   },
   {
     ...photo3,
-    similar_photos: {
+    similar_photos: [
       photo2,
       photo3,
       photo4,
       photo5,
-    }
+    ]
   },
   {
     ...photo4,
-    similar_photos: {
+    similar_photos: [
       photo2,
       photo3,
       photo4,
       photo5,
-    }
+    ]
   },
   {
     ...photo5,
-    similar_photos: {
+    similar_photos: [
       photo2,
       photo3,
       photo4,
       photo5,
-    }
+    ]
   },
   {
     ...photo6,
-    similar_photos: {
+    similar_photos: [
       photo2,
       photo3,
       photo4,
       photo5,
-    }
+    ]
   },
   {
     ...photo7,
-    similar_photos: {
+    similar_photos: [
       photo2,
       photo3,
       photo4,
       photo5,
-    }
+    ]
   },
   {
     ...photo8,
-    similar_photos: {
+    similar_photos: [
       photo2,
       photo3,
       photo4,
       photo5,
-    }
+    ]
   },
   {
     ...photo9,
-    similar_photos: {
+    similar_photos: [
       photo2,
       photo3,
       photo4,
       photo5,
-    }
+    ]
   },
   {
     ...photo10,
-    similar_photos: {
+    similar_photos: [
       photo2,
       photo3,
       photo4,
       photo5,
-    }
+    ]
   }
 ]
 

@@ -6,8 +6,14 @@ import PhotoList from 'components/PhotoList';
 import PhotoFavButton from 'components/PhotoFavButton';
 
 const PhotoDetailsModal = (props) => {
-  const {closeModal, modalDetails, photos, pushToFavourites, removeFromFavourites} = props;
-  const {location, urls, user} = modalDetails;
+  const {
+    closeModal, 
+    modalDetails, 
+    pushToFavourites, 
+    removeFromFavourites
+  } = props;
+
+  const {location, urls, user, similar_photos} = modalDetails;
   const getFavouritePhotoId = (favourite) => {
     favourite ? pushToFavourites(modalDetails) : removeFromFavourites(modalDetails);
   }
@@ -33,7 +39,7 @@ const PhotoDetailsModal = (props) => {
           </div>
           <div className="photo-details-modal__header">
             <section className="photo-details-modal__images">
-              <PhotoList photos={photos}/>
+              <PhotoList photos={similar_photos}/>
             </section>
           </div>
         </div>
