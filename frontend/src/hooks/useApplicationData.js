@@ -1,9 +1,8 @@
-import { useState, useReducer } from "react";
+import { useReducer } from "react";
 
 const useApplicationData = () => {
   // Globally track favourited photos
-
-  const [favouriteArray, dispatch] = useReducer((favouriteArray, action) => {
+  const [favouriteArray, favouriteDispatch] = useReducer((favouriteArray, action) => {
     if (action.type === "add") {
       favouriteArray = [...favouriteArray, action.photo];
     }
@@ -15,34 +14,42 @@ const useApplicationData = () => {
   }, []);
 
   const addFavourite = (photo) => {
-    dispatch({ type: "add", photo });
+    favouriteDispatch({ type: "add", photo });
   }
 
   const removeFavourite = (photo) => {
-    dispatch({ type: "remove", photo });
+    favouriteDispatch({ type: "remove", photo });
   }
 
+  // Modals
+  const [modal, modalDispatch] = useReducer((modal, action) => {
+    if (action.type === "open") {
+      modal = action.currentPhoto;
+    }
 
-  // Modal state
-  const [displayModal, setDisplayModal] = useState(false);
-  const [modalDetails, setModalDetails] = useState({});
+    if (action.type === "close") {
+      modal = false;
+    }
+    return modal;
+  }, false)
 
   // Show or hide modal
-  const toggleModal = (id) => {
-    const isDisplayed = !displayModal;
-    setDisplayModal(isDisplayed);
-
-    if (isDisplayed) {
-      const currentPhoto = photos.filter(photo => photo.id === id)[0];
-      setModalDetails({
-        urls: currentPhoto.urls,
-        user: currentPhoto.user,
-        location: currentPhoto.location
-      });
-    }
+  const openModal = (currentPhoto) => {
+    modalDispatch({ type: "open", currentPhoto });
   }
 
-  return { addFavourite, removeFavourite, favouriteArray, toggleModal, displayModal };
+  const closeModal = (currentPhoto) => {
+    modalDispatch({ type: "close", currentPhoto })
+  }
+
+  return {
+    addFavourite,
+    removeFavourite,
+    favouriteArray,
+    modal,
+    openModal,
+    closeModal
+  };
 };
 
 export default useApplicationData;

@@ -4,10 +4,9 @@ import "../styles/PhotoListItem.scss";
 import PhotoFavButton from "./PhotoFavButton";
 
 const PhotoListItem = (props) => {
-  const {photo, toggleModal, addFavourite, removeFavourite} = props;
-  const photoId = photo.id;
+  const {photo, openModal, addFavourite, removeFavourite} = props;
   const handleModalClick = (e) => {
-    toggleModal(photoId);
+    openModal(photo);
   }
   const getFavouritePhotoId = (favourite) => {
     favourite ? addFavourite(photo) : removeFavourite(photo);

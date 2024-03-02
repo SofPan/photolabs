@@ -6,7 +6,7 @@ import PhotoList from 'components/PhotoList';
 import PhotoFavButton from 'components/PhotoFavButton';
 
 const PhotoDetailsModal = (props) => {
-  const {toggleModal, modalDetails, photos, pushToFavourites, removeFromFavourites} = props;
+  const {closeModal, modalDetails, photos, pushToFavourites, removeFromFavourites} = props;
   const {location, urls, user} = modalDetails;
   const getFavouritePhotoId = (favourite) => {
     favourite ? pushToFavourites(modalDetails) : removeFromFavourites(modalDetails);
@@ -14,7 +14,7 @@ const PhotoDetailsModal = (props) => {
 
   return (
     <div className="photo-details-modal">
-      <button onClick={toggleModal} className="photo-details-modal__close-button">
+      <button onClick={closeModal} className="photo-details-modal__close-button">
         <img src={closeSymbol} alt="close symbol" />
       </button>
       {

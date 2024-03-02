@@ -1,4 +1,4 @@
-import {React, useState} from 'react';
+import {React} from 'react';
 
 
 import HomeRoute from 'routes/HomeRoute';
@@ -14,8 +14,9 @@ const App = () => {
     addFavourite,
     removeFavourite,
     favouriteArray,
-    toggleModal,
-    displayModal
+    modal,
+    openModal,
+    closeModal
   } = useApplicationData();
 
   return (
@@ -23,16 +24,16 @@ const App = () => {
       <HomeRoute 
         photos={photos} 
         topics={topics} 
-        toggleModal={toggleModal}
         hasFavourite={favouriteArray.length > 0}
         addFavourite={addFavourite}
         removeFavourite={removeFavourite}
+        openModal={openModal}
       />
       {
-        displayModal && 
+        modal && 
         <PhotoDetailsModal 
-          toggleModal={toggleModal} 
-          modalDetails={modalDetails}
+          closeModal={closeModal} 
+          modalDetails={modal}
           photos={photos}
           addFavourite={addFavourite}
           removeFavourite={removeFavourite}
