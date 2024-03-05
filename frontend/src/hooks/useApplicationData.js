@@ -74,18 +74,9 @@ const useApplicationData = () => {
     }
   }, [state.currentTopicId]);
 
-  // Show or hide modal
-  const openModal = (currentPhoto) => {
-    dispatch({ type: ACTIONS.OPEN_MODAL, payload: currentPhoto });
-  }
-
-  const closeModal = () => {
-    dispatch({ type: ACTIONS.CLOSE_MODAL })
-  }
-
   // filter by topic
   const selectTopic = (e) => {
-    dispatch({ type: ACTIONS.FILTER_TOPIC, payload: e.target.parentNode.id })
+    // dispatch({ type: ACTIONS.FILTER_TOPIC, payload: e.target.parentNode.id })
   };
 
   const dispatchState = stateToToggle => {
@@ -95,8 +86,6 @@ const useApplicationData = () => {
   return {
     dispatchState,
     state,
-    openModal,
-    closeModal,
     selectTopic
   };
 };

@@ -7,7 +7,6 @@ import '../styles/TopNavigationBar.scss'
 const TopNavigation = (props) => {
   const {
     topics,
-    selectTopic,
     hasFavourite,
     dispatchState
   } = props;
@@ -18,13 +17,10 @@ const TopNavigation = (props) => {
       <div className="top-nav-bar__topics">
         <TopicList 
           topics={topics} 
-          selectTopic={selectTopic}
           dispatchState={dispatchState}
-
         />
         <FavBadge 
           selected={hasFavourite} 
-          // isFavPhotoExist={hasFavourite}
         />
       </div>
     </div>

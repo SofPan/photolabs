@@ -6,7 +6,6 @@ import TopicListItem from "./TopicListItem";
 const TopicList = (props) => {
   const {
     topics, 
-    selectTopic,
     dispatchState
   } = props;
   
@@ -17,7 +16,6 @@ const TopicList = (props) => {
           <TopicListItem 
             key={topic.id} 
             topic={topic} 
-            selectTopic={selectTopic}
             dispatchState={dispatchState}
           />
         )

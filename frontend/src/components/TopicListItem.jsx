@@ -5,13 +5,19 @@ import "../styles/TopicListItem.scss";
 const TopicListItem = (props) => {
   const {
     topic, 
-    selectTopic,
     dispatchState 
   } = props;
   
+  const handleTopicClick = (e) => {
+    const stateObject = {
+      type: "filter_topic",
+      payload: e.target.parentNode.id
+    }
+    dispatchState(stateObject);
+  }
   return (
     <div 
-      onClick={selectTopic} 
+      onClick={handleTopicClick} 
       key={topic.id} 
       id={topic.id} 
       className="topic-list__item"
