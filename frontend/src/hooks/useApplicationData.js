@@ -84,7 +84,6 @@ const useApplicationData = () => {
   return {
     dispatchState,
     state,
-    selectTopic
   };
 };
 
