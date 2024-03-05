@@ -1,49 +1,79 @@
-import { useReducer } from "react";
+import { useReducer, useEffect } from "react";
 
-const ADD_FAVOURITE = "add";
-const REM_FAVOURITE = "remove";
-const OPEN_MODAL = "open";
-const CLOSE_MODAL = "close";
+export const ACTIONS = {
+  ADD_FAVOURITE: "add",
+  REM_FAVOURITE: "remove",
+  OPEN_MODAL: "open",
+  CLOSE_MODAL: "close",
+  SET_PHOTO_DATA: "set_photos",
+  SET_TOPIC_DATA: "set_topics"
+}
+
+const reducer = (state, action) => {
+  switch (action.type) {
+    case ACTIONS.ADD_FAVOURITE:
+      return [...state, action.photo];
+    case ACTIONS.REM_FAVOURITE:
+      return state.filter(photo => photo.id != action.photo.id);
+    case ACTIONS.OPEN_MODAL:
+      return action.currentPhoto;
+    case ACTIONS.CLOSE_MODAL:
+      return false;
+    case ACTIONS.SET_PHOTO_DATA:
+      return [...action.payload];
+    case ACTIONS.SET_TOPIC_DATA:
+      return [...action.payload];
+    default:
+      throw new Error(
+        `Tried to reduce with unsupported action type: ${action.type}`
+      );
+  }
+}
 
 const useApplicationData = () => {
-  // Globally track favourited photos
-  const [favouriteArray, favouriteDispatch] = useReducer((favouriteArray, action) => {
-    if (action.type === ADD_FAVOURITE) {
-      return [...favouriteArray, action.photo];
-    }
+  const initialState = {
+    photoData: [],
+    topicData: [],
+  }
+  const [photoData, photoDispatch] = useReducer(reducer, initialState.photoData);
 
-    if (action.type === REM_FAVOURITE) {
-      return favouriteArray.filter(photo => photo.id != action.photo.id);
-    }
+  useEffect(() => {
+    fetch('/api/photos', { method: 'GET' })
+      .then(response => response.json())
+      .then(data => {
+        photoDispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: data })
+      })
+      .catch(error => console.log("photo fetch error", error));
   }, []);
 
+  const [topicData, topicDispatch] = useReducer(reducer, initialState.topicData);
+  useEffect(() => {
+    fetch('/api/topics', { method: 'GET' })
+      .then(response => response.json())
+      .then(data => {
+        topicDispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: data })
+      })
+      .catch(error => console.log("topic fetch error", error));
+  }, [])
+
+  // Globally track favourited photos
+  const [favouriteArray, favouriteDispatch] = useReducer(reducer, []);
   const addFavourite = (photo) => {
-    favouriteDispatch({ type: ADD_FAVOURITE, photo });
+    favouriteDispatch({ type: ACTIONS.ADD_FAVOURITE, photo });
   }
-
   const removeFavourite = (photo) => {
-    favouriteDispatch({ type: REM_FAVOURITE, photo });
+    favouriteDispatch({ type: ACTIONS.REM_FAVOURITE, photo });
   }
-
-  // Modals
-  const [modal, modalDispatch] = useReducer((modal, action) => {
-    console.log(action.currentPhoto.similar_photos)
-    if (action.type === OPEN_MODAL) {
-      return action.currentPhoto;
-    }
-
-    if (action.type === CLOSE_MODAL) {
-      return false;
-    }
-  }, false)
 
   // Show or hide modal
+  const [modal, modalDispatch] = useReducer(reducer, false);
+
   const openModal = (currentPhoto) => {
-    modalDispatch({ type: OPEN_MODAL, currentPhoto });
+    modalDispatch({ type: ACTIONS.OPEN_MODAL, currentPhoto });
   }
 
   const closeModal = () => {
-    modalDispatch({ type: CLOSE_MODAL })
+    modalDispatch({ type: ACTIONS.CLOSE_MODAL })
   }
 
   return {
@@ -52,7 +82,9 @@ const useApplicationData = () => {
     favouriteArray,
     modal,
     openModal,
-    closeModal
+    closeModal,
+    photoData,
+    topicData
   };
 };
 

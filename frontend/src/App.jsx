@@ -3,11 +3,9 @@ import {React} from 'react';
 
 import HomeRoute from 'routes/HomeRoute';
 import './App.scss';
-import photos from './mocks/photos';
-import topics from './mocks/topics';
 import PhotoDetailsModal from 'routes/PhotoDetailsModal';
 import useApplicationData from 'hooks/useApplicationData';
-
+// import topics from 'mocks/topics';
 
 const App = () => {
   const {
@@ -16,14 +14,16 @@ const App = () => {
     favouriteArray,
     modal,
     openModal,
-    closeModal
+    closeModal,
+    photoData,
+    topicData
   } = useApplicationData();
 
   return (
     <div className="App">
       <HomeRoute 
-        photos={photos} 
-        topics={topics} 
+        photos={photoData}
+        topics={topicData} 
         hasFavourite={favouriteArray.length > 0}
         addFavourite={addFavourite}
         removeFavourite={removeFavourite}
@@ -34,7 +34,7 @@ const App = () => {
         <PhotoDetailsModal 
           closeModal={closeModal} 
           modalDetails={modal}
-          photos={photos}
+          photos={photoData}
           addFavourite={addFavourite}
           removeFavourite={removeFavourite}
         />
