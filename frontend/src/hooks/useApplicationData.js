@@ -6,7 +6,8 @@ export const ACTIONS = {
   OPEN_MODAL: "open",
   CLOSE_MODAL: "close",
   SET_PHOTO_DATA: "set_photos",
-  SET_TOPIC_DATA: "set_topics"
+  SET_TOPIC_DATA: "set_topics",
+  FILTER_TOPIC: "filter_topic"
 }
 
 const reducer = (state, action) => {
@@ -23,6 +24,8 @@ const reducer = (state, action) => {
       return { ...state, photoData: action.payload };
     case ACTIONS.SET_TOPIC_DATA:
       return { ...state, topicData: action.payload };
+    case ACTIONS.FILTER_TOPIC:
+      return { ...state, currentTopicId: action.payload };
     default:
       throw new Error(
         `Tried to reduce with unsupported action type: ${action.type}`
@@ -34,11 +37,13 @@ const useApplicationData = () => {
   const initialState = {
     photoData: [],
     topicData: [],
+    currentTopicId: null,
     modal: false,
     favouriteData: [],
   }
   const [state, dispatch] = useReducer(reducer, initialState);
 
+  // fetch all photos
   useEffect(() => {
     fetch('/api/photos', { method: 'GET' })
       .then(response => response.json())
@@ -48,6 +53,7 @@ const useApplicationData = () => {
       .catch(error => console.log("photo fetch error", error));
   }, []);
 
+  // fetch all topics
   useEffect(() => {
     fetch('/api/topics', { method: 'GET' })
       .then(response => response.json())
@@ -56,6 +62,18 @@ const useApplicationData = () => {
       })
       .catch(error => console.log("topic fetch error", error));
   }, [])
+
+  // fetch by requested topic
+  useEffect(() => {
+    if (state.currentTopicId) {
+      fetch(`/api/topics/photos/${state.currentTopicId}`, { method: "GET" })
+        .then(response => response.json())
+        .then(data => {
+          dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: data })
+        })
+        .catch(error => console.log("change topic error", error));
+    }
+  }, [state.currentTopicId]);
 
   // Globally track favourited photos
   const addFavourite = (photo) => {
@@ -74,12 +92,19 @@ const useApplicationData = () => {
     dispatch({ type: ACTIONS.CLOSE_MODAL })
   }
 
+  // filter by topic
+  const selectTopic = (e) => {
+    dispatch({ type: ACTIONS.FILTER_TOPIC, payload: e.target.parentNode.id })
+  };
+
+
   return {
     addFavourite,
     removeFavourite,
     state,
     openModal,
-    closeModal
+    closeModal,
+    selectTopic
   };
 };
 

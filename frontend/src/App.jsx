@@ -13,7 +13,8 @@ const App = () => {
     removeFavourite,
     state,
     openModal,
-    closeModal
+    closeModal,
+    selectTopic
   } = useApplicationData();
 
   return (
@@ -25,6 +26,7 @@ const App = () => {
         addFavourite={addFavourite}
         removeFavourite={removeFavourite}
         openModal={openModal}
+        topicClick={selectTopic}
       />
       {
         state.modal && 

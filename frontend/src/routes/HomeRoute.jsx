@@ -11,7 +11,8 @@ const HomeRoute = (props) => {
     openModal,
     addFavourite,
     removeFavourite,
-    hasFavourite
+    hasFavourite,
+    topicClick
   } = props;
 
   return (
@@ -19,6 +20,7 @@ const HomeRoute = (props) => {
       <TopNavigation 
         topics={topics} 
         hasFavourite={hasFavourite}
+        topicClick={topicClick}
       />
       <PhotoList 
         photos={photos} 
