@@ -7,7 +7,13 @@ const TopicList = ({topics, topicClick}) => {
   return (
     <div className="top-nav-bar__topic-list">
       {
-        topics.map(topic => <TopicListItem key={topic.id} topic={topic} topicClick={topicClick}/>)
+        topics.map(topic => 
+          <TopicListItem 
+            key={topic.id} 
+            topic={topic} 
+            topicClick={topicClick}
+          />
+        )
       }
     </div>
   );

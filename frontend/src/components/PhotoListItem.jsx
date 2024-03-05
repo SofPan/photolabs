@@ -4,11 +4,18 @@ import "../styles/PhotoListItem.scss";
 import PhotoFavButton from "./PhotoFavButton";
 
 const PhotoListItem = (props) => {
-  const {photo, openModal, addFavourite, removeFavourite} = props;
-  const handleModalClick = (e) => {
+  const {
+    photo, 
+    openModal, 
+    addFavourite, 
+    removeFavourite
+  } = props;
+
+  const handleModalClick = () => {
     openModal(photo);
   }
-  const getFavouritePhotoId = (favourite) => {
+
+  const toggleFavouritePhoto = (favourite) => {
     favourite ? addFavourite(photo) : removeFavourite(photo);
   }
   return(
@@ -20,7 +27,7 @@ const PhotoListItem = (props) => {
         <figcaption >{photo.user.username}</figcaption>
         <address className="photo-list__user-location">{photo.location.city}, {photo.location.country}</address>
       </div>
-      <PhotoFavButton getFavouritePhotoId={getFavouritePhotoId}/>
+      <PhotoFavButton toggleFavouritePhoto={toggleFavouritePhoto}/>
       </div>
     </article>
   )

@@ -1,11 +1,9 @@
 import {React} from 'react';
 
-
 import HomeRoute from 'routes/HomeRoute';
-import './App.scss';
 import PhotoDetailsModal from 'routes/PhotoDetailsModal';
 import useApplicationData from 'hooks/useApplicationData';
-// import topics from 'mocks/topics';
+import './App.scss';
 
 const App = () => {
   const {
@@ -21,7 +19,8 @@ const App = () => {
     <div className="App">
       <HomeRoute 
         photos={state.photoData}
-        topics={state.topicData} 
+        topics={state.topicData}
+        // if there is a favourite, show notification badge 
         hasFavourite={state.favouriteData.length > 0}
         addFavourite={addFavourite}
         removeFavourite={removeFavourite}
