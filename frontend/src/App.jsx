@@ -9,8 +9,6 @@ const App = () => {
   const {
     dispatchState,
     state,
-    openModal,
-    closeModal,
     selectTopic
   } = useApplicationData();
 
@@ -21,14 +19,12 @@ const App = () => {
         topics={state.topicData}
         // if there is a favourite, show notification badge 
         hasFavourite={state.favouriteData.length > 0}
-        openModal={openModal}
         selectTopic={selectTopic}
         dispatchState={dispatchState}
       />
       {
         state.modal && 
         <PhotoDetailsModal 
-          closeModal={closeModal} 
           modalDetails={state.modal}
           photos={state.photoData}
           dispatchState={dispatchState}

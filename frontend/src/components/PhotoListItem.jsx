@@ -6,12 +6,15 @@ import PhotoFavButton from "./PhotoFavButton";
 const PhotoListItem = (props) => {
   const {
     photo, 
-    openModal, 
     dispatchState
   } = props;
 
   const handleModalClick = () => {
-    openModal(photo);
+    const stateObject = {
+      type: "open",
+      payload: photo
+    }
+    dispatchState(stateObject);
   }
 
   const toggleFavouritePhoto = (favourite) => {

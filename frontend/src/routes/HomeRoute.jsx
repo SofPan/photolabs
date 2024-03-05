@@ -8,7 +8,6 @@ const HomeRoute = (props) => {
   const {
     photos,
     topics,
-    openModal,
     hasFavourite,
     selectTopic,
     dispatchState
@@ -25,7 +24,6 @@ const HomeRoute = (props) => {
       />
       <PhotoList 
         photos={photos} 
-        openModal={openModal}
         dispatchState={dispatchState}
 
       />

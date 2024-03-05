@@ -6,7 +6,6 @@ import "../styles/PhotoList.scss";
 const PhotoList = (props) => {
   const {
     photos, 
-    openModal,
     dispatchState
   } = props;
   
@@ -17,7 +16,6 @@ const PhotoList = (props) => {
           <PhotoListItem 
             key={photo.id}
             photo={photo} 
-            openModal={openModal}
             dispatchState={dispatchState}
           />
         )

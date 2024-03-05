@@ -7,13 +7,19 @@ import PhotoFavButton from 'components/PhotoFavButton';
 
 const PhotoDetailsModal = (props) => {
   const {
-    closeModal, 
     modalDetails,
     dispatchState
   } = props;
 
   const {location, urls, user, similar_photos} = modalDetails;
 
+  const handleModalClick = () => {
+    const stateObject = {
+      type: "close",
+      payload: modalDetails
+    }
+    dispatchState(stateObject);
+  }
   const toggleFavouritePhoto = (favourite) => {
     const stateObject = {
       type: favourite ? "add" : "remove",
@@ -24,7 +30,7 @@ const PhotoDetailsModal = (props) => {
 
   return (
     <div className="photo-details-modal">
-      <button onClick={closeModal} className="photo-details-modal__close-button">
+      <button onClick={handleModalClick} className="photo-details-modal__close-button">
         <img src={closeSymbol} alt="close symbol" />
       </button>
       {
