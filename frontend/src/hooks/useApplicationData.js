@@ -15,9 +15,9 @@ const reducer = (state, action) => {
     case ACTIONS.ADD_FAVOURITE:
       return { ...state, favouriteData: [...state.favouriteData, action.payload] };
     case ACTIONS.REM_FAVOURITE:
-      return { ...state, favouriteData: state.favouriteData.filter(photo => photo.id != action.photo.id) };
+      return { ...state, favouriteData: state.favouriteData.filter(photo => photo.id != action.payload.id) };
     case ACTIONS.OPEN_MODAL:
-      return { ...state, modal: action.currentPhoto };
+      return { ...state, modal: action.payload };
     case ACTIONS.CLOSE_MODAL:
       return { ...state, modal: false };
     case ACTIONS.SET_PHOTO_DATA:
@@ -79,12 +79,12 @@ const useApplicationData = () => {
     dispatch({ type: ACTIONS.ADD_FAVOURITE, payload: photo });
   }
   const removeFavourite = (photo) => {
-    dispatch({ type: ACTIONS.REM_FAVOURITE, photo });
+    dispatch({ type: ACTIONS.REM_FAVOURITE, payload: photo });
   }
 
   // Show or hide modal
   const openModal = (currentPhoto) => {
-    dispatch({ type: ACTIONS.OPEN_MODAL, currentPhoto });
+    dispatch({ type: ACTIONS.OPEN_MODAL, payload: currentPhoto });
   }
 
   const closeModal = () => {
