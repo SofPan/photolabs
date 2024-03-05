@@ -13,7 +13,7 @@ export const ACTIONS = {
 const reducer = (state, action) => {
   switch (action.type) {
     case ACTIONS.ADD_FAVOURITE:
-      return { ...state, favouriteData: action.payload };
+      return { ...state, favouriteData: [...state.favouriteData, action.payload] };
     case ACTIONS.REM_FAVOURITE:
       return { ...state, favouriteData: state.favouriteData.filter(photo => photo.id != action.photo.id) };
     case ACTIONS.OPEN_MODAL:
