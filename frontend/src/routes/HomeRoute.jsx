@@ -12,7 +12,7 @@ const HomeRoute = (props) => {
     addFavourite,
     removeFavourite,
     hasFavourite,
-    topicClick
+    selectTopic
   } = props;
 
   return (
@@ -20,7 +20,7 @@ const HomeRoute = (props) => {
       <TopNavigation 
         topics={topics} 
         hasFavourite={hasFavourite}
-        topicClick={topicClick}
+        selectTopic={selectTopic}
       />
       <PhotoList 
         photos={photos} 

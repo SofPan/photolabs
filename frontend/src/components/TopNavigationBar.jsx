@@ -4,7 +4,7 @@ import TopicList from './TopicList';
 import FavBadge from './FavBadge';
 import '../styles/TopNavigationBar.scss'
 
-const TopNavigation = ({topics, hasFavourite, topicClick}) => {
+const TopNavigation = ({topics, hasFavourite, selectTopic}) => {
 
   return (
     <div className="top-nav-bar">
@@ -12,7 +12,7 @@ const TopNavigation = ({topics, hasFavourite, topicClick}) => {
       <div className="top-nav-bar__topics">
         <TopicList 
           topics={topics} 
-          topicClick={topicClick}
+          selectTopic={selectTopic}
         />
         <FavBadge 
           selected={hasFavourite} 

@@ -25,7 +25,7 @@ const App = () => {
         addFavourite={addFavourite}
         removeFavourite={removeFavourite}
         openModal={openModal}
-        topicClick={selectTopic}
+        selectTopic={selectTopic}
       />
       {
         state.modal && 

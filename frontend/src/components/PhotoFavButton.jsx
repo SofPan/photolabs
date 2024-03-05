@@ -7,9 +7,8 @@ function PhotoFavButton({toggleFavouritePhoto, isSelected = false}) {
   const [selected, setSelected] = useState(isSelected);
 
   const handleClick = () => {
-    const changeSelected = !selected;
-    setSelected(changeSelected);
-    toggleFavouritePhoto(changeSelected);
+    toggleFavouritePhoto(!selected);
+    setSelected(!selected);
   }
   
   return (
