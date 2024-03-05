@@ -12,18 +12,21 @@ export const ACTIONS = {
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case ACTIONS.ADD_FAVOURITE:
-      return { ...state, favouriteData: [...state.favouriteData, action.payload] };
-    case ACTIONS.REM_FAVOURITE:
-      return { ...state, favouriteData: state.favouriteData.filter(photo => photo.id != action.payload.id) };
-    case ACTIONS.OPEN_MODAL:
-      return { ...state, modal: action.payload };
-    case ACTIONS.CLOSE_MODAL:
-      return { ...state, modal: false };
     case ACTIONS.SET_PHOTO_DATA:
       return { ...state, photoData: action.payload };
     case ACTIONS.SET_TOPIC_DATA:
       return { ...state, topicData: action.payload };
+    // handle favourites for notification badge
+    case ACTIONS.ADD_FAVOURITE:
+      return { ...state, favouriteData: [...state.favouriteData, action.payload] };
+    case ACTIONS.REM_FAVOURITE:
+      return { ...state, favouriteData: state.favouriteData.filter(photo => photo.id != action.payload.id) };
+    // toggle modal open state
+    case ACTIONS.OPEN_MODAL:
+      return { ...state, modal: action.payload };
+    case ACTIONS.CLOSE_MODAL:
+      return { ...state, modal: false };
+    // Filter photos by topc
     case ACTIONS.FILTER_TOPIC:
       return { ...state, currentTopicId: action.payload };
     default:
@@ -73,11 +76,6 @@ const useApplicationData = () => {
         .catch(error => console.log("change topic error", error));
     }
   }, [state.currentTopicId]);
-
-  // filter by topic
-  const selectTopic = (e) => {
-    // dispatch({ type: ACTIONS.FILTER_TOPIC, payload: e.target.parentNode.id })
-  };
 
   const dispatchState = stateToToggle => {
     dispatch({ type: stateToToggle.type, payload: stateToToggle.payload });
