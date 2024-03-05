@@ -11,30 +11,27 @@ const App = () => {
   const {
     addFavourite,
     removeFavourite,
-    favouriteArray,
-    modal,
+    state,
     openModal,
-    closeModal,
-    photoData,
-    topicData
+    closeModal
   } = useApplicationData();
 
   return (
     <div className="App">
       <HomeRoute 
-        photos={photoData}
-        topics={topicData} 
-        hasFavourite={favouriteArray.length > 0}
+        photos={state.photoData}
+        topics={state.topicData} 
+        hasFavourite={state.favouriteData.length > 0}
         addFavourite={addFavourite}
         removeFavourite={removeFavourite}
         openModal={openModal}
       />
       {
-        modal && 
+        state.modal && 
         <PhotoDetailsModal 
           closeModal={closeModal} 
-          modalDetails={modal}
-          photos={photoData}
+          modalDetails={state.modal}
+          photos={state.photoData}
           addFavourite={addFavourite}
           removeFavourite={removeFavourite}
         />
