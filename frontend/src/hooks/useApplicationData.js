@@ -43,25 +43,24 @@ const useApplicationData = () => {
   }
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  // fetch all photos
+  // fetch all photos and topics
   useEffect(() => {
+    // photos
     fetch('/api/photos', { method: 'GET' })
       .then(response => response.json())
       .then(data => {
         dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: data })
       })
       .catch(error => console.log("photo fetch error", error));
-  }, []);
 
-  // fetch all topics
-  useEffect(() => {
+    // topics
     fetch('/api/topics', { method: 'GET' })
       .then(response => response.json())
       .then(data => {
         dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: data })
       })
       .catch(error => console.log("topic fetch error", error));
-  }, [])
+  }, []);
 
   // fetch by requested topic
   useEffect(() => {
