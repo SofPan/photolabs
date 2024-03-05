@@ -7,8 +7,7 @@ import './App.scss';
 
 const App = () => {
   const {
-    addFavourite,
-    removeFavourite,
+    dispatchState,
     state,
     openModal,
     closeModal,
@@ -22,10 +21,9 @@ const App = () => {
         topics={state.topicData}
         // if there is a favourite, show notification badge 
         hasFavourite={state.favouriteData.length > 0}
-        addFavourite={addFavourite}
-        removeFavourite={removeFavourite}
         openModal={openModal}
         selectTopic={selectTopic}
+        dispatchState={dispatchState}
       />
       {
         state.modal && 
@@ -33,8 +31,7 @@ const App = () => {
           closeModal={closeModal} 
           modalDetails={state.modal}
           photos={state.photoData}
-          addFavourite={addFavourite}
-          removeFavourite={removeFavourite}
+          dispatchState={dispatchState}
         />
       }
     </div>

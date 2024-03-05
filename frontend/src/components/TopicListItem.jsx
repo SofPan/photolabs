@@ -2,7 +2,13 @@ import React from "react";
 
 import "../styles/TopicListItem.scss";
 
-const TopicListItem = ({topic, selectTopic}) => {
+const TopicListItem = (props) => {
+  const {
+    topic, 
+    selectTopic,
+    dispatchState 
+  } = props;
+  
   return (
     <div 
       onClick={selectTopic} 

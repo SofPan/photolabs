@@ -6,9 +6,8 @@ import "../styles/PhotoList.scss";
 const PhotoList = (props) => {
   const {
     photos, 
-    openModal, 
-    addFavourite,
-    removeFavourite
+    openModal,
+    dispatchState
   } = props;
   
   return (
@@ -19,8 +18,7 @@ const PhotoList = (props) => {
             key={photo.id}
             photo={photo} 
             openModal={openModal}
-            addFavourite={addFavourite}
-            removeFavourite={removeFavourite}
+            dispatchState={dispatchState}
           />
         )
       }

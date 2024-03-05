@@ -74,14 +74,6 @@ const useApplicationData = () => {
     }
   }, [state.currentTopicId]);
 
-  // Globally track favourited photos
-  const addFavourite = (photo) => {
-    dispatch({ type: ACTIONS.ADD_FAVOURITE, payload: photo });
-  }
-  const removeFavourite = (photo) => {
-    dispatch({ type: ACTIONS.REM_FAVOURITE, payload: photo });
-  }
-
   // Show or hide modal
   const openModal = (currentPhoto) => {
     dispatch({ type: ACTIONS.OPEN_MODAL, payload: currentPhoto });
@@ -96,10 +88,12 @@ const useApplicationData = () => {
     dispatch({ type: ACTIONS.FILTER_TOPIC, payload: e.target.parentNode.id })
   };
 
+  const dispatchState = stateToToggle => {
+    dispatch({ type: stateToToggle.type, payload: stateToToggle.payload });
+  }
 
   return {
-    addFavourite,
-    removeFavourite,
+    dispatchState,
     state,
     openModal,
     closeModal,

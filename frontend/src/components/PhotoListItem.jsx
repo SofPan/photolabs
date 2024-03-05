@@ -7,8 +7,7 @@ const PhotoListItem = (props) => {
   const {
     photo, 
     openModal, 
-    addFavourite, 
-    removeFavourite
+    dispatchState
   } = props;
 
   const handleModalClick = () => {
@@ -16,7 +15,11 @@ const PhotoListItem = (props) => {
   }
 
   const toggleFavouritePhoto = (favourite) => {
-    favourite ? addFavourite(photo) : removeFavourite(photo);
+    const stateObject = {
+      type: favourite ? "add" : "remove",
+      payload: photo
+    }
+    dispatchState(stateObject);
   }
   return(
     <article  className="photo-list__item" key={photo.id} >

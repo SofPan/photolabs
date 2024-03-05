@@ -8,14 +8,18 @@ import PhotoFavButton from 'components/PhotoFavButton';
 const PhotoDetailsModal = (props) => {
   const {
     closeModal, 
-    modalDetails, 
-    pushToFavourites, 
-    removeFromFavourites
+    modalDetails,
+    dispatchState
   } = props;
 
   const {location, urls, user, similar_photos} = modalDetails;
-  const getFavouritePhotoId = (favourite) => {
-    favourite ? pushToFavourites(modalDetails) : removeFromFavourites(modalDetails);
+
+  const toggleFavouritePhoto = (favourite) => {
+    const stateObject = {
+      type: favourite ? "add" : "remove",
+      payload: modalDetails
+    }
+    dispatchState(stateObject);
   }
 
   return (
@@ -27,7 +31,7 @@ const PhotoDetailsModal = (props) => {
         modalDetails &&
         <div> 
           <div className="photo-details-modal__top-bar">
-          <PhotoFavButton getFavouritePhotoId={getFavouritePhotoId}/>
+          <PhotoFavButton toggleFavouritePhoto={toggleFavouritePhoto}/>
             <img className="photo-details-modal__image" src={urls.full} />
           <div className="photo-details-modal__photographer-details">
               <img className="photo-details-modal__photographer-profile" src={user.profile} />

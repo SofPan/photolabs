@@ -9,10 +9,9 @@ const HomeRoute = (props) => {
     photos,
     topics,
     openModal,
-    addFavourite,
-    removeFavourite,
     hasFavourite,
-    selectTopic
+    selectTopic,
+    dispatchState
   } = props;
 
   return (
@@ -21,12 +20,14 @@ const HomeRoute = (props) => {
         topics={topics} 
         hasFavourite={hasFavourite}
         selectTopic={selectTopic}
+        dispatchState={dispatchState}
+
       />
       <PhotoList 
         photos={photos} 
         openModal={openModal}
-        addFavourite={addFavourite}
-        removeFavourite={removeFavourite}
+        dispatchState={dispatchState}
+
       />
     </div>
   );
