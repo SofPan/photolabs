@@ -6,6 +6,10 @@
   border-style: solid;
   border-radius: 8px;
   max-width: fit-content;
+
+  .photo-details-modal & {
+    width: calc(50% - 65px);
+  }
 }
 
 .photo-list__image {
@@ -21,6 +25,11 @@
   width: 300px;
   height: 200px;
   object-fit: cover;
+
+  .photo-details-modal & {
+    width: 250px;
+    height: 175px;
+  }
 }
 
 .photo-list__user-profile {
