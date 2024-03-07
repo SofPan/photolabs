@@ -6,10 +6,10 @@ import PhotoFavButton from "./PhotoFavButton";
 const PhotoListItem = (props) => {
   const {
     photo, 
-    dispatchState
+    dispatchState,
   } = props;
 
-  const handleModalClick = () => {
+  const handleModalClick = (e) => {
     const stateObject = {
       type: "open",
       payload: photo
@@ -24,6 +24,7 @@ const PhotoListItem = (props) => {
     }
     dispatchState(stateObject);
   }
+
   return(
     <article  className="photo-list__item" key={photo.id} >
       <img id={photo.id} className="photo-list__image" src={photo.urls.regular} onClick={handleModalClick}/>

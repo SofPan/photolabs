@@ -23,7 +23,13 @@ const reducer = (state, action) => {
       return { ...state, favouriteData: state.favouriteData.filter(photo => photo.id != action.payload.id) };
     // toggle modal open state
     case ACTIONS.OPEN_MODAL:
-      return { ...state, modal: action.payload };
+      let currentPhoto = action.payload
+      // when similar photo is clicked in modal
+      // filter for the photo's full data
+      if (!currentPhoto.similar_photos) {
+        currentPhoto = state.photoData.filter(photo => photo.id === currentPhoto.id)[0];
+      }
+      return { ...state, modal: currentPhoto };
     case ACTIONS.CLOSE_MODAL:
       return { ...state, modal: false };
     // Filter photos by topc

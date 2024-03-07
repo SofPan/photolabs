@@ -49,7 +49,7 @@ const PhotoDetailsModal = (props) => {
           </div>
           <div className="photo-details-modal__header">
             <section className="photo-details-modal__images">
-              <PhotoList photos={similar_photos}/>
+              <PhotoList photos={similar_photos} dispatchState={dispatchState}/>
             </section>
           </div>
         </div>

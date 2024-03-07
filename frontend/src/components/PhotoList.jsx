@@ -8,7 +8,7 @@ const PhotoList = (props) => {
     photos, 
     dispatchState
   } = props;
-  
+
   return (
     <ul className="photo-list">
       {

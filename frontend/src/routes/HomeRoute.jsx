@@ -25,7 +25,6 @@ const HomeRoute = (props) => {
       <PhotoList 
         photos={photos} 
         dispatchState={dispatchState}
-
       />
     </div>
   );
