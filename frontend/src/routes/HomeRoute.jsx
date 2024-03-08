@@ -10,7 +10,8 @@ const HomeRoute = (props) => {
     topics,
     hasFavourite,
     selectTopic,
-    dispatchState
+    dispatchState,
+    isLoaded
   } = props;
 
   return (
@@ -25,6 +26,7 @@ const HomeRoute = (props) => {
       <PhotoList 
         photos={photos} 
         dispatchState={dispatchState}
+        isLoaded={isLoaded}
       />
     </div>
   );

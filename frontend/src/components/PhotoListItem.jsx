@@ -7,6 +7,7 @@ const PhotoListItem = (props) => {
   const {
     photo, 
     dispatchState,
+    isLoaded
   } = props;
 
   const handleModalClick = (e) => {
@@ -26,7 +27,7 @@ const PhotoListItem = (props) => {
   }
 
   return(
-    <article  className="photo-list__item" key={photo.id} >
+    <article  className={`photo-list__item ${!isLoaded && "photo-list__item-loading"}`} key={photo.id} >
       <img id={photo.id} className="photo-list__image" src={photo.urls.regular} onClick={handleModalClick}/>
       <div className="photo-list__user-details">
       <img className="photo-list__user-profile" src={photo.user.profile} />

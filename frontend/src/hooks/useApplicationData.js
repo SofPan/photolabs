@@ -7,7 +7,8 @@ export const ACTIONS = {
   CLOSE_MODAL: "close",
   SET_PHOTO_DATA: "set_photos",
   SET_TOPIC_DATA: "set_topics",
-  FILTER_TOPIC: "filter_topic"
+  FILTER_TOPIC: "filter_topic",
+  SET_IS_LOADED: "loaded"
 }
 
 const reducer = (state, action) => {
@@ -35,6 +36,8 @@ const reducer = (state, action) => {
     // Filter photos by topc
     case ACTIONS.FILTER_TOPIC:
       return { ...state, currentTopicId: action.payload };
+    case ACTIONS.SET_IS_LOADED:
+      return { ...state, isLoaded: true };
     default:
       throw new Error(
         `Tried to reduce with unsupported action type: ${action.type}`
@@ -49,6 +52,7 @@ const useApplicationData = () => {
     currentTopicId: null,
     modal: false,
     favouriteData: [],
+    isLoaded: false
   }
   const [state, dispatch] = useReducer(reducer, initialState);
 
@@ -58,7 +62,11 @@ const useApplicationData = () => {
     fetch('/api/photos', { method: 'GET' })
       .then(response => response.json())
       .then(data => {
-        dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: data })
+        dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: data });
+        setTimeout(() => {
+          dispatch({ type: ACTIONS.SET_IS_LOADED });
+        }, 4000)
+
       })
       .catch(error => console.log("photo fetch error", error));
 

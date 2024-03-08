@@ -10,6 +10,12 @@
   .photo-details-modal & {
     width: calc(50% - 65px);
   }
+
+  &-loading{
+    position: relative;
+    z-index: 9999;
+    background-color: #838383;
+  }
 }
 
 .photo-list__image {

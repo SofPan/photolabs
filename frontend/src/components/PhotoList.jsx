@@ -6,7 +6,8 @@ import "../styles/PhotoList.scss";
 const PhotoList = (props) => {
   const {
     photos, 
-    dispatchState
+    dispatchState,
+    isLoaded
   } = props;
 
   return (
@@ -17,6 +18,7 @@ const PhotoList = (props) => {
             key={photo.id}
             photo={photo} 
             dispatchState={dispatchState}
+            isLoaded={isLoaded}
           />
         )
       }
