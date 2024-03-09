@@ -12,8 +12,10 @@ export const ACTIONS = {
 
 const reducer = (state, action) => {
   switch (action.type) {
+    // Set photos to be displayed
     case ACTIONS.SET_PHOTO_DATA:
       return { ...state, photoData: action.payload };
+    // Set topics to be displayed
     case ACTIONS.SET_TOPIC_DATA:
       return { ...state, topicData: action.payload };
     // handle favourites for notification badge
@@ -32,7 +34,7 @@ const reducer = (state, action) => {
       return { ...state, modal: currentPhoto };
     case ACTIONS.CLOSE_MODAL:
       return { ...state, modal: false };
-    // Filter photos by topc
+    // Filter photos by topic
     case ACTIONS.FILTER_TOPIC:
       return { ...state, currentTopicId: action.payload };
     default:
@@ -83,6 +85,7 @@ const useApplicationData = () => {
     }
   }, [state.currentTopicId]);
 
+  // when any type of state in the app needs to change, send back the action type and payload to dispatch
   const dispatchState = stateToToggle => {
     dispatch({ type: stateToToggle.type, payload: stateToToggle.payload });
   }

@@ -8,6 +8,7 @@ const TopicListItem = (props) => {
     dispatchState 
   } = props;
   
+  // pass selected topic back to useApplicationData
   const handleTopicClick = (e) => {
     const stateObject = {
       type: "filter_topic",

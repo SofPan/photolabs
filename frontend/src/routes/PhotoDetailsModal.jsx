@@ -13,6 +13,7 @@ const PhotoDetailsModal = (props) => {
 
   const {location, urls, user, similar_photos} = modalDetails;
 
+  // pass modal state back to useApplicationData
   const handleModalClick = () => {
     const stateObject = {
       type: "close",
@@ -20,6 +21,8 @@ const PhotoDetailsModal = (props) => {
     }
     dispatchState(stateObject);
   }
+
+  // pass favourite state back to useApplicationData
   const toggleFavouritePhoto = (favourite) => {
     const stateObject = {
       type: favourite ? "add" : "remove",

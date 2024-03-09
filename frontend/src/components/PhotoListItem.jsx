@@ -9,6 +9,7 @@ const PhotoListItem = (props) => {
     dispatchState,
   } = props;
 
+  // pass modal state back to useApplicationData
   const handleModalClick = (e) => {
     const stateObject = {
       type: "open",
@@ -17,6 +18,7 @@ const PhotoListItem = (props) => {
     dispatchState(stateObject);
   }
 
+  // pass favourite state back to useApplicationData
   const toggleFavouritePhoto = (favourite) => {
     const stateObject = {
       type: favourite ? "add" : "remove",
