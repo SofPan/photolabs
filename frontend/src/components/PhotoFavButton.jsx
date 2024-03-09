@@ -5,10 +5,11 @@ import '../styles/PhotoFavButton.scss';
 
 function PhotoFavButton(props) {
   const {
-    toggleFavouritePhoto
+    toggleFavouritePhoto,
+    isSelected
   } = props;
   
-  const [selected, setSelected] = useState(false);
+  const [selected, setSelected] = useState(isSelected);
 
   const handleClick = () => {
     toggleFavouritePhoto(!selected);

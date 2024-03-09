@@ -18,6 +18,7 @@ const App = () => {
         topics={state.topicData}
         // if there is a favourite, show notification badge 
         hasFavourite={state.favouriteData.length > 0}
+        favourites={state.favouriteData}
         dispatchState={dispatchState}
       />
       {
@@ -26,6 +27,7 @@ const App = () => {
           modalDetails={state.modal}
           photos={state.photoData}
           dispatchState={dispatchState}
+          favourites={state.favouriteData}
         />
       }
     </div>

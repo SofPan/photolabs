@@ -9,6 +9,7 @@ const HomeRoute = (props) => {
     photos,
     topics,
     hasFavourite,
+    favourites,
     dispatchState
   } = props;
 
@@ -17,12 +18,14 @@ const HomeRoute = (props) => {
       <TopNavigation 
         topics={topics} 
         hasFavourite={hasFavourite}
+        // favourites={favourites}
         dispatchState={dispatchState}
 
       />
       <PhotoList 
         photos={photos} 
         dispatchState={dispatchState}
+        favourites={favourites}
       />
     </div>
   );

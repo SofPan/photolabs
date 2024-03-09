@@ -7,10 +7,11 @@ const PhotoListItem = (props) => {
   const {
     photo, 
     dispatchState,
+    favourites
   } = props;
 
   // pass modal state back to useApplicationData
-  const handleModalClick = (e) => {
+  const handleModalClick = () => {
     const stateObject = {
       type: "open",
       payload: photo
@@ -27,9 +28,16 @@ const PhotoListItem = (props) => {
     dispatchState(stateObject);
   }
 
+  const checkIfPhotoIsFavourite = () => {
+    const photoIsFavourite = favourites.filter(favourite => favourite.id === photo.id);
+    return photoIsFavourite.length ? true : false;
+  }
+
+  const photoIsFavourite = checkIfPhotoIsFavourite();
+
   return(
     <article  className="photo-list__item" key={photo.id} >
-      <PhotoFavButton toggleFavouritePhoto={toggleFavouritePhoto}/>
+      <PhotoFavButton toggleFavouritePhoto={toggleFavouritePhoto} isSelected={photoIsFavourite}/>
       <img id={photo.id} className="photo-list__image" src={photo.urls.regular} onClick={handleModalClick}/>
       <div className="photo-list__user-details">
       <img className="photo-list__user-profile" src={photo.user.profile} />

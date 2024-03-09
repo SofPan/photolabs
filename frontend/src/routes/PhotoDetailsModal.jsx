@@ -8,7 +8,8 @@ import PhotoFavButton from 'components/PhotoFavButton';
 const PhotoDetailsModal = (props) => {
   const {
     modalDetails,
-    dispatchState
+    dispatchState,
+    favourites
   } = props;
 
   const {location, urls, user, similar_photos} = modalDetails;
@@ -31,6 +32,13 @@ const PhotoDetailsModal = (props) => {
     dispatchState(stateObject);
   }
 
+  const checkIfPhotoIsFavourite = () => {
+    const photoIsFavourite = favourites.filter(favourite => favourite.id === modalDetails.id);
+    return photoIsFavourite.length ? true : false;
+  }
+
+  const photoIsFavourite = checkIfPhotoIsFavourite();
+
   return (
     <div className="photo-details-modal">
       <button onClick={handleModalClick} className="photo-details-modal__close-button">
@@ -40,7 +48,7 @@ const PhotoDetailsModal = (props) => {
         modalDetails &&
         <div> 
           <div className="photo-details-modal__top-bar">
-          <PhotoFavButton toggleFavouritePhoto={toggleFavouritePhoto}/>
+          <PhotoFavButton toggleFavouritePhoto={toggleFavouritePhoto} isSelected={photoIsFavourite}/>
             <img className="photo-details-modal__image" src={urls.full} />
           <div className="photo-details-modal__photographer-details">
               <img className="photo-details-modal__photographer-profile" src={user.profile} />
@@ -52,7 +60,7 @@ const PhotoDetailsModal = (props) => {
           </div>
           <div className="photo-details-modal__header">
             <section className="photo-details-modal__images">
-              <PhotoList photos={similar_photos} dispatchState={dispatchState}/>
+              <PhotoList photos={similar_photos} dispatchState={dispatchState} favourites={favourites}/>
             </section>
           </div>
         </div>
