@@ -27,11 +27,15 @@ const PhotoListItem = (props) => {
   }
 
   return(
-    <article  className={`photo-list__item ${!isLoaded && "photo-list__item-loading"}`} key={photo.id} >
+    <article  className="photo-list__item" key={photo.id} >
       <img id={photo.id} className="photo-list__image" src={photo.urls.regular} onClick={handleModalClick}/>
+      <div className="photo-list__image-loading animation"></div>
       <div className="photo-list__user-details">
       <img className="photo-list__user-profile" src={photo.user.profile} />
+      <div className="photo-list__user-profile-loading"></div>
       <div className="photo-list__user-info">
+        <div className="photo-list__user-info-loading animation"></div>
+        <div className="photo-list__user-info-loading animation"></div>
         <figcaption >{photo.user.username}</figcaption>
         <address className="photo-list__user-location">{photo.location.city}, {photo.location.country}</address>
       </div>

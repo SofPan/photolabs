@@ -1,0 +1,41 @@
+@mixin keyframes($name){
+  @keyframes #{$name}{
+    0%{
+      background-image: linear-gradient(to right, #ccc 0%, #fff 100%)
+    }
+    10%{
+      background-image: linear-gradient(to right, #ccc 10%, #fff 100%)
+    }
+    20%{
+      background-image: linear-gradient(to right, #ccc 20%, #fff 100%)
+    }
+    30%{
+      background-image: linear-gradient(to right, #ccc 30%, #fff 100%)
+    }
+    40%{
+      background-image: linear-gradient(to right, #ccc 40%, #fff 100%)
+    }
+    50%{
+      background-image: linear-gradient(to right, #ccc 50%, #fff 100%)
+    }
+    60%{
+      background-image: linear-gradient(to right, #ccc 60%, #fff 100%)
+    }
+    70%{
+      background-image: linear-gradient(to right, #ccc 70%, #fff 100%)
+    }
+    80%{
+      background-image: linear-gradient(to right, #ccc 80%, #fff 100%)
+    }
+    90%{
+      background-image: linear-gradient(to right, #ccc 90%, #fff 100%)
+    }
+    100%{
+      background-image: linear-gradient(to right, #ccc 100%, #fff 100%)
+    }
+  }
+}
+
+@mixin animation($animation, $duration, $method, $time){
+  animation: $animation $duration $method $time;
+}

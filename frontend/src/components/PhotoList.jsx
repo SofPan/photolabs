@@ -11,7 +11,7 @@ const PhotoList = (props) => {
   } = props;
 
   return (
-    <ul className="photo-list">
+    <ul className={`photo-list ${!isLoaded && "photo-list__loading"}`}>
       {
         photos.map(photo => 
           <PhotoListItem 

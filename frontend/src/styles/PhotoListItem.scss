@@ -1,63 +1,107 @@
-.photo-list__item {
-  margin: 24px;
-  padding: 8px;
-  border-width: 0.5px;
-  border-color: lightgray;
-  border-style: solid;
-  border-radius: 8px;
-  max-width: fit-content;
+@use './mixins.scss' as *;
 
-  .photo-details-modal & {
-    width: calc(50% - 65px);
+.photo-list{
+  &__item {
+    margin: 24px;
+    padding: 8px;
+    border-width: 0.5px;
+    border-color: lightgray;
+    border-style: solid;
+    border-radius: 8px;
+    max-width: fit-content;
+  
+    .photo-details-modal & {
+      width: calc(50% - 65px);
+    }
+  }
+  
+  &__image {
+    user-select: none;
+    width: 300px;
+    height: 200px;
+    object-fit: cover;
+  }
+  
+  &__image {
+    border-radius: 8px 8px 0px 0px;
+    user-select: none;
+    width: 300px;
+    height: 200px;
+    object-fit: cover;
+  
+    .photo-details-modal & {
+      width: 250px;
+      height: 175px;
+    }
+  }
+  
+  &__user-profile {
+    object-fit: cover;
+    border-radius: 100%;
+    vertical-align: middle;
+    margin-right: 8px;
+    width: 40px;
+    height: 40px;
+  }
+  
+  &__user-details {
+    display: flex;
+  }
+  
+  &__user-info {
+    margin-top: 5px;
+    font-weight: 700;
+    font-size: 12px;
+    margin-left: 8px;
+    &-loading{
+      display: none;
+    }
+  }
+  
+  &__user-location {
+    color: #838383;
   }
 
-  &-loading{
-    position: relative;
-    z-index: 9999;
-    background-color: #838383;
+  // Loading state styles
+  &__loading{
+    .photo-list{
+      &__image{
+        display: none;
+        &-loading{
+          width: 300px;
+          height: 200px;
+        }
+      }
+      &__user{
+        &-profile{
+          display: none;
+          &-loading{
+            border-radius: 100%;
+            vertical-align: middle;
+            margin-right: 8px;
+            width: 40px;
+            height: 40px;
+            background-color: #ccc;
+          }
+        }
+
+        &-info{
+          margin-top: 5px;
+          figcaption, address{
+            display: none;
+          }
+          &-loading{
+            display: block;
+            margin: 5px 0;
+            width: 75px;
+            height: 5px;
+          }
+        }
+      }
+    }
   }
-}
-
-.photo-list__image {
-  user-select: none;
-  width: 300px;
-  height: 200px;
-  object-fit: cover;
-}
-
-.photo-list__image {
-  border-radius: 8px 8px 0px 0px;
-  user-select: none;
-  width: 300px;
-  height: 200px;
-  object-fit: cover;
-
-  .photo-details-modal & {
-    width: 250px;
-    height: 175px;
+  .animation{
+    @include keyframes(background);
+    @include animation(background, 1s, linear, infinite );
   }
-}
-
-.photo-list__user-profile {
-  object-fit: cover;
-  border-radius: 100%;
-  vertical-align: middle;
-  margin-right: 8px;
-  width: 40px;
-  height: 40px;
-}
-
-.photo-list__user-details {
-  display: flex;
-}
-
-.photo-list__user-info {
-  margin-top: 5px;
-  font-weight: 700;
-  font-size: 12px;
-  margin-left: 8px;
-}
-
-.photo-list__user-location {
-  color: #838383;
 }
