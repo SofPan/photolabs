@@ -9,8 +9,8 @@ const HomeRoute = (props) => {
     photos,
     topics,
     hasFavourite,
-    selectTopic,
     dispatchState,
+    checkIfPhotoIsFavourite,
     isLoaded
   } = props;
 
@@ -19,13 +19,14 @@ const HomeRoute = (props) => {
       <TopNavigation 
         topics={topics} 
         hasFavourite={hasFavourite}
-        selectTopic={selectTopic}
+        // favourites={favourites}
         dispatchState={dispatchState}
 
       />
       <PhotoList 
         photos={photos} 
         dispatchState={dispatchState}
+        checkIfPhotoIsFavourite={checkIfPhotoIsFavourite}
         isLoaded={isLoaded}
       />
     </div>

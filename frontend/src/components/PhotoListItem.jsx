@@ -7,10 +7,12 @@ const PhotoListItem = (props) => {
   const {
     photo, 
     dispatchState,
+    checkIfPhotoIsFavourite
     isLoaded
   } = props;
 
-  const handleModalClick = (e) => {
+  // pass modal state back to useApplicationData
+  const handleModalClick = () => {
     const stateObject = {
       type: "open",
       payload: photo
@@ -18,6 +20,7 @@ const PhotoListItem = (props) => {
     dispatchState(stateObject);
   }
 
+  // pass favourite state back to useApplicationData
   const toggleFavouritePhoto = (favourite) => {
     const stateObject = {
       type: favourite ? "add" : "remove",
@@ -26,8 +29,11 @@ const PhotoListItem = (props) => {
     dispatchState(stateObject);
   }
 
+  const photoIsFavourite = checkIfPhotoIsFavourite(photo);
+
   return(
     <article  className="photo-list__item" key={photo.id} >
+      <PhotoFavButton toggleFavouritePhoto={toggleFavouritePhoto} isSelected={photoIsFavourite}/>
       <img id={photo.id} className="photo-list__image" src={photo.urls.regular} onClick={handleModalClick}/>
       <div className="photo-list__image-loading animation"></div>
       <div className="photo-list__user-details">
@@ -39,7 +45,6 @@ const PhotoListItem = (props) => {
         <figcaption >{photo.user.username}</figcaption>
         <address className="photo-list__user-location">{photo.location.city}, {photo.location.country}</address>
       </div>
-      <PhotoFavButton toggleFavouritePhoto={toggleFavouritePhoto}/>
       </div>
     </article>
   )

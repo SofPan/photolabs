@@ -7,6 +7,7 @@ const PhotoList = (props) => {
   const {
     photos, 
     dispatchState,
+    checkIfPhotoIsFavourite,
     isLoaded
   } = props;
 
@@ -18,6 +19,7 @@ const PhotoList = (props) => {
             key={photo.id}
             photo={photo} 
             dispatchState={dispatchState}
+            checkIfPhotoIsFavourite={checkIfPhotoIsFavourite}
             isLoaded={isLoaded}
           />
         )
