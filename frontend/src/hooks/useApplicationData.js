@@ -63,10 +63,11 @@ const useApplicationData = () => {
       .then(response => response.json())
       .then(data => {
         dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: data });
+      })
+      .then(() => {
         setTimeout(() => {
           dispatch({ type: ACTIONS.SET_IS_LOADED });
-        }, 4000)
-
+        }, 2000)
       })
       .catch(error => console.log("photo fetch error", error));
 
