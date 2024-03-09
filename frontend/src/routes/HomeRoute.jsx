@@ -9,7 +9,6 @@ const HomeRoute = (props) => {
     photos,
     topics,
     hasFavourite,
-    selectTopic,
     dispatchState
   } = props;
 
@@ -18,7 +17,6 @@ const HomeRoute = (props) => {
       <TopNavigation 
         topics={topics} 
         hasFavourite={hasFavourite}
-        selectTopic={selectTopic}
         dispatchState={dispatchState}
 
       />
