@@ -29,6 +29,7 @@ const PhotoListItem = (props) => {
 
   return(
     <article  className="photo-list__item" key={photo.id} >
+      <PhotoFavButton toggleFavouritePhoto={toggleFavouritePhoto}/>
       <img id={photo.id} className="photo-list__image" src={photo.urls.regular} onClick={handleModalClick}/>
       <div className="photo-list__user-details">
       <img className="photo-list__user-profile" src={photo.user.profile} />
@@ -36,7 +37,6 @@ const PhotoListItem = (props) => {
         <figcaption >{photo.user.username}</figcaption>
         <address className="photo-list__user-location">{photo.location.city}, {photo.location.country}</address>
       </div>
-      <PhotoFavButton toggleFavouritePhoto={toggleFavouritePhoto}/>
       </div>
     </article>
   )
