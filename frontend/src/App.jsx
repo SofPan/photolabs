@@ -30,6 +30,7 @@ const App = () => {
           photos={state.photoData}
           dispatchState={dispatchState}
           checkIfPhotoIsFavourite={checkIfPhotoIsFavourite}
+          isLoaded = {state.isLoaded}
         />
       }
     </div>

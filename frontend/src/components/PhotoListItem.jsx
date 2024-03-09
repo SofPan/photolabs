@@ -7,8 +7,7 @@ const PhotoListItem = (props) => {
   const {
     photo, 
     dispatchState,
-    checkIfPhotoIsFavourite
-    isLoaded
+    checkIfPhotoIsFavourite,
   } = props;
 
   // pass modal state back to useApplicationData

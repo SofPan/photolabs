@@ -9,7 +9,8 @@ const PhotoDetailsModal = (props) => {
   const {
     modalDetails,
     dispatchState,
-    checkIfPhotoIsFavourite
+    checkIfPhotoIsFavourite,
+    isLoaded
   } = props;
 
   const {location, urls, user, similar_photos} = modalDetails;
@@ -55,7 +56,7 @@ const PhotoDetailsModal = (props) => {
           </div>
           <div className="photo-details-modal__header">
             <section className="photo-details-modal__images">
-              <PhotoList photos={similar_photos} dispatchState={dispatchState} checkIfPhotoIsFavourite={checkIfPhotoIsFavourite}/>
+              <PhotoList photos={similar_photos} dispatchState={dispatchState} checkIfPhotoIsFavourite={checkIfPhotoIsFavourite} isLoaded={isLoaded}/>
             </section>
           </div>
         </div>
