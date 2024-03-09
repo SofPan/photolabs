@@ -90,9 +90,16 @@ const useApplicationData = () => {
     dispatch({ type: stateToToggle.type, payload: stateToToggle.payload });
   }
 
+  // Check if the photo is part of the favouriteData array and persist the FavIcon state between topic changes and modal opening
+  const checkIfPhotoIsFavourite = photoToCheck => {
+    const isFavouritePhoto = state.favouriteData.filter(favourite => favourite.id === photoToCheck.id);
+    return isFavouritePhoto.length ? true : false;
+  };
+
   return {
     dispatchState,
     state,
+    checkIfPhotoIsFavourite
   };
 };
 

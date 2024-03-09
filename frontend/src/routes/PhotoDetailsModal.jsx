@@ -9,7 +9,7 @@ const PhotoDetailsModal = (props) => {
   const {
     modalDetails,
     dispatchState,
-    favourites
+    checkIfPhotoIsFavourite
   } = props;
 
   const {location, urls, user, similar_photos} = modalDetails;
@@ -32,12 +32,7 @@ const PhotoDetailsModal = (props) => {
     dispatchState(stateObject);
   }
 
-  const checkIfPhotoIsFavourite = () => {
-    const photoIsFavourite = favourites.filter(favourite => favourite.id === modalDetails.id);
-    return photoIsFavourite.length ? true : false;
-  }
-
-  const photoIsFavourite = checkIfPhotoIsFavourite();
+  const photoIsFavourite = checkIfPhotoIsFavourite(modalDetails);
 
   return (
     <div className="photo-details-modal">
@@ -60,7 +55,7 @@ const PhotoDetailsModal = (props) => {
           </div>
           <div className="photo-details-modal__header">
             <section className="photo-details-modal__images">
-              <PhotoList photos={similar_photos} dispatchState={dispatchState} favourites={favourites}/>
+              <PhotoList photos={similar_photos} dispatchState={dispatchState} checkIfPhotoIsFavourite={checkIfPhotoIsFavourite}/>
             </section>
           </div>
         </div>

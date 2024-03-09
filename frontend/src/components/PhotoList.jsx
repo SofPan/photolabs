@@ -7,7 +7,7 @@ const PhotoList = (props) => {
   const {
     photos, 
     dispatchState,
-    favourites
+    checkIfPhotoIsFavourite
   } = props;
 
   return (
@@ -18,7 +18,7 @@ const PhotoList = (props) => {
             key={photo.id}
             photo={photo} 
             dispatchState={dispatchState}
-            favourites={favourites}
+            checkIfPhotoIsFavourite={checkIfPhotoIsFavourite}
           />
         )
       }

@@ -9,6 +9,7 @@ const App = () => {
   const {
     dispatchState,
     state,
+    checkIfPhotoIsFavourite
   } = useApplicationData();
 
   return (
@@ -18,7 +19,7 @@ const App = () => {
         topics={state.topicData}
         // if there is a favourite, show notification badge 
         hasFavourite={state.favouriteData.length > 0}
-        favourites={state.favouriteData}
+        checkIfPhotoIsFavourite={checkIfPhotoIsFavourite}
         dispatchState={dispatchState}
       />
       {
@@ -27,7 +28,7 @@ const App = () => {
           modalDetails={state.modal}
           photos={state.photoData}
           dispatchState={dispatchState}
-          favourites={state.favouriteData}
+          checkIfPhotoIsFavourite={checkIfPhotoIsFavourite}
         />
       }
     </div>

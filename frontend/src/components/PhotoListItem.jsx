@@ -7,7 +7,7 @@ const PhotoListItem = (props) => {
   const {
     photo, 
     dispatchState,
-    favourites
+    checkIfPhotoIsFavourite
   } = props;
 
   // pass modal state back to useApplicationData
@@ -28,12 +28,7 @@ const PhotoListItem = (props) => {
     dispatchState(stateObject);
   }
 
-  const checkIfPhotoIsFavourite = () => {
-    const photoIsFavourite = favourites.filter(favourite => favourite.id === photo.id);
-    return photoIsFavourite.length ? true : false;
-  }
-
-  const photoIsFavourite = checkIfPhotoIsFavourite();
+  const photoIsFavourite = checkIfPhotoIsFavourite(photo);
 
   return(
     <article  className="photo-list__item" key={photo.id} >
