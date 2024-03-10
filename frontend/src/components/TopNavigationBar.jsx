@@ -20,7 +20,8 @@ const TopNavigation = (props) => {
           dispatchState={dispatchState}
         />
         <FavBadge 
-          selected={hasFavourite} 
+          selected={true}
+          displayAlert={hasFavourite} 
         />
       </div>
     </div>
