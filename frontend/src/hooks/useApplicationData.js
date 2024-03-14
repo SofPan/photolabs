@@ -85,6 +85,17 @@ const useApplicationData = () => {
     }
   }, [state.currentTopicId]);
 
+  useEffect(() => {
+    // photos
+    fetch('/api/photos', { method: 'GET' })
+      .then(response => response.json())
+      .then(data => {
+        dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: data })
+      })
+      .catch(error => console.log("photo fetch error", error));
+
+  }, [state.modal]);
+
   // when any type of state in the app needs to change, send back the action type and payload to dispatch
   const dispatchState = stateToToggle => {
     dispatch({ type: stateToToggle.type, payload: stateToToggle.payload });

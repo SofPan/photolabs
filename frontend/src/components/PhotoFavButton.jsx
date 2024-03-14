@@ -1,4 +1,4 @@
-import React, {useState } from 'react';
+import React, {useEffect, useState } from 'react';
 
 import FavIcon from './FavIcon';
 import '../styles/PhotoFavButton.scss';
@@ -15,7 +15,12 @@ function PhotoFavButton(props) {
     toggleFavouritePhoto(!selected);
     setSelected(!selected);
   }
-  
+
+  // handle showing isSelected when being changed from different components (modal vs. home page)
+  useEffect(() => {
+    setSelected(isSelected);
+  }, [isSelected]);
+
   return (
     <div className="photo-list__fav-icon">
       <div onClick={handleClick} className="photo-list__fav-icon-svg">

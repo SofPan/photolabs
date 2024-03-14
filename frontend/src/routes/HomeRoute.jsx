@@ -18,7 +18,6 @@ const HomeRoute = (props) => {
       <TopNavigation 
         topics={topics} 
         hasFavourite={hasFavourite}
-        // favourites={favourites}
         dispatchState={dispatchState}
 
       />
