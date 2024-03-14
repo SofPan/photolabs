@@ -1,4 +1,4 @@
-import {React, useState} from 'react';
+import {React} from 'react';
 
 import PhotoList from 'components/PhotoList';
 import TopNavigation from 'components/TopNavigationBar';
